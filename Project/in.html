@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalmGuard | Stress & Strain Sentinel</title>
+    <link rel="stylesheet" href="in.css">
+    <style>
+        /* Additional CSS for a fixed height on the image */
+        .welcome {
+            max-width: 100%;
+            height: 800px; /* Adjust this value to your desired fixed height */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            max-height: 50px;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+        }
+
+        li {
+            margin: 0 15px;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 8px;
+            padding: 10px;
+        }
+
+        .button {
+            background-color: #000000;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .link {
+            border: 2px solid #54dddb;
+            border-radius: 8px;
+            font-size: 8px;
+        }
+
+        .padded-button {
+            padding: 8px 10px;
+            font-size: 8px;
+            background-color: #000000;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .padded-button:hover {
+            background-color: #429fa4;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img src="asset/1.png" alt="logo" class="logo">
+        <ul>
+            <li><a href="aboutus.html" class="link">About Us</a></li>
+            <li><a href="signpage.html" class="button">Sign in</a></li>
+            <li><a href="monitering.html" class="padded-button" id="startMonitoringBtn">Start Monitoring</a></li>
+            <li><a href="profile.html" class="padded-button">Profile</a></li>
+        </ul>
+    </nav>
+    <div class="imgBox">
+        <img src="asset/2.png" class="welcome" alt="Welcome Image">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const startMonitoringBtn = document.getElementById('startMonitoringBtn');
+
+            startMonitoringBtn.addEventListener('click', () => {
+                window.location.href = "monitering.html"; // Redirect to monitoring.html
+            });
+        });
+    </script>
+</body>
+
+</html>

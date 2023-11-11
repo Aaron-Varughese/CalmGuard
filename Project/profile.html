@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ECECEC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .profile-container {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .user-info {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .user-email,
+        .user-mobile,
+        .user-location,
+        .user-features {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .profile-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Add hover effect for the button */
+        .profile-button:hover {
+            background-color: #333333;
+        }
+
+        /* Style for the form */
+        .edit-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .edit-input {
+            margin: 10px;
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .edit-picture-input {
+            margin: 10px;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-container">
+        <img src="profile-picture.jpg" alt="Profile Picture" class="profile-picture">
+        <div class="user-info">John Doe</div>
+        <div class="user-email">john.doe@example.com</div>
+        <div class="user-mobile">Mobile: +1234567890</div>
+        <div class="user-location">Location: City, Country</div>
+        <div class="user-features">Additional Features: Feature 1, Feature 2</div>
+        <button class="profile-button" onclick="showEditForm()">Edit Profile</button>
+
+        <!-- Edit form (hidden by default) -->
+        <form class="edit-form" id="editForm" style="display: none;">
+            <input type="text" class="edit-input" placeholder="New Name" id="newName">
+            <input type="email" class="edit-input" placeholder="New Email" id="newEmail">
+            <input type="tel" class="edit-input" placeholder="New Mobile Number" id="newMobile">
+            <input type="text" class="edit-input" placeholder="New Location" id="newLocation">
+            <textarea class="edit-input" placeholder="Additional Features" id="newFeatures"></textarea>
+            <input type="file" accept="image/*" class="edit-picture-input" id="newProfilePicture">
+            <button type="button" class="profile-button" onclick="saveChanges()">Save Changes</button>
+        </form>
+
+        <!-- Home button -->
+        <a href="in.html" class="profile-button">Home</a>
+    </div>
+
+    <script>
+        function showEditForm() {
+            document.getElementById('editForm').style.display = 'flex';
+        }
+
+        function saveChanges() {
+            // Fetch values from the form
+            const newName = document.getElementById('newName').value;
+            const newEmail = document.getElementById('newEmail').value;
+            const newMobile = document.getElementById('newMobile').value;
+            const newLocation = document.getElementById('newLocation').value;
+            const newFeatures = document.getElementById('newFeatures').value;
+            const newProfilePicture = document.getElementById('newProfilePicture').files[0];
+
+            // Update the profile information (you can handle this with backend logic)
+            document.querySelector('.user-info').innerText = newName;
+            document.querySelector('.user-email').innerText = 'Email: ' + newEmail;
+            document.querySelector('.user-mobile').innerText = 'Mobile: ' + newMobile;
+            document.querySelector('.user-location').innerText = 'Location: ' + newLocation;
+            document.querySelector('.user-features').innerText = 'Additional Features: ' + newFeatures;
+
+            // Update the profile picture
+            if (newProfilePicture) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.querySelector('.profile-picture').src = e.target.result;
+                }
+                reader.readAsDataURL(newProfilePicture);
+            }
+
+            // Hide the edit form after saving changes
+            document.getElementById('editForm').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
